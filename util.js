@@ -7,7 +7,7 @@ const isString = Symbol("string");
 const isFunction = Symbol("function");
 const isClass = Symbol("class");
 
-class Util {
+export default class Util {
     constructor() {
     }
 
@@ -41,6 +41,10 @@ class Util {
 
     get Class() {
         return "Class";
+    }
+
+    get Letter() {
+        return "Letter";
     }
 
     [isArray](data) {
@@ -134,6 +138,28 @@ class Util {
         } else {
             return strVal.includes(search);
         }
+    }
+
+    count(str, search) {
+        //str.split(search).filter(s => s.trim().length > 0).length
+        let re = new RegExp('(' + search + ')', 'g');;
+        let count = 0;
+
+        try {
+            count = str.match(re).length;
+        } catch (error) {
+            
+        }
+
+        if(search == this.Letter && !this.is(str, this.Array)) {
+            count = str.length;
+        } else if(search == this.Array && this.is(str, this.Array)) {
+            count = str.length;
+        } else if(search == this.Object && this.is(str, this.Object)) {
+            count = Object.keys(str).length;
+        }
+
+        return count;
     }
 }
 
