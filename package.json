@@ -1,0 +1,9 @@
+{
+  "name": "util.js",
+  "version": "1.0.0",
+  "description": " Useful JavaScript Functions in Single File",
+  "main": "util.js",
+  "repository": "https://github.com/aligoren/util.js.git",
+  "author": "Ali GÖREN <goren.ali@yandex.com>",
+  "license": "Unlicensed"
+}
