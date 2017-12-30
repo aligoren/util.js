@@ -36,3 +36,28 @@ console.log(u.is(function a (d) {}, u.Function));
 console.log(u.is(class b {}, u.Class));
 ```
 
+## Count
+
+**Word Count**:
+
+```javascript
+console.log(u.count('My name is no name when I do not like names. What is your name? Can u say your naming conversion', 'name'));
+```
+
+**Letter Count**:
+
+```javascript
+console.log(u.count('😚 You now I\'ll be happy', u.Letter));
+```
+
+**Array Count**:
+
+```javascript
+console.log(u.count([1, 2, 3], u.Array));
+```
+
+**Object Key Count**:
+
+```javascript
+console.log(u.count({'w': 't', 'w2': 't2', 'wf': 'wf', 'wfs': 'wfs2'}, u.Object));
+```
