@@ -6,6 +6,7 @@ const isDouble = Symbol('double');
 const isString = Symbol("string");
 const isFunction = Symbol("function");
 const isClass = Symbol("class");
+const isElement = Symbol("element");
 
 export default class Util {
     constructor() {
@@ -93,7 +94,31 @@ export default class Util {
         return isClass && this.startsWith(data, 'class');
     }
 
+    [isElement](data, type) {
+        let el = document.querySelectorAll(data);
+        let result = false;
+
+        el.forEach(e => {
+            switch(type) {
+                case 'visible':
+                    result = window.getComputedStyle(e, null).getPropertyValue('display') !== 'none' 
+                            && window.getComputedStyle(e, null).getPropertyValue('visibility') !== 'hidden';
+                    break;
+                case 'checked':
+                    result = e.hasAttribute('checked');
+                    break;
+                default:
+                    break;
+            }
+        });
+
+        return result;
+    }
+
     [checker](data, type) {
+
+        let elemArr = ['checked', 'visible']
+        
         let types = {
             'Array': this[isArray](data),
             'Object': this[isObject](data),
@@ -101,9 +126,14 @@ export default class Util {
             'Double': this[isDouble](data),
             'String': this[isString](data),
             'Function': this[isFunction](data),
-            'Class': this[isClass](data)
+            'Class': this[isClass](data),
         }
-
+        
+        if(elemArr.indexOf(type) > -1) {
+            type = 'Element';
+            types['Element'] = his[isElement](data, type);
+        }
+        
         return types[type];
     }
 
@@ -141,7 +171,6 @@ export default class Util {
     }
 
     count(str, search) {
-        //str.split(search).filter(s => s.trim().length > 0).length
         let re = new RegExp('(' + search + ')', 'g');;
         let count = 0;
 
@@ -151,15 +180,28 @@ export default class Util {
             
         }
 
-        if(search == this.Letter && !this.is(str, this.Array)) {
+        if (search === this.Letter && !this.is(str, this.Array)) {
             count = str.length;
-        } else if(search == this.Array && this.is(str, this.Array)) {
+        } else if (search === this.Array && this.is(str, this.Array)) {
             count = str.length;
-        } else if(search == this.Object && this.is(str, this.Object)) {
+        } else if (search === this.Object && this.is(str, this.Object)) {
             count = Object.keys(str).length;
-        }
+        } else
 
         return count;
+    }
+
+    url(what = '', all = false) {
+        const props = ['hash', 'host', 'hostname', 'href', 'origin', 'pathname', 'port', 'protocol', 'search'];
+        let url = {}
+
+        props.map(p => url[p] = document.location[p]);
+
+        if(!all) {
+            url = url[what];
+        }
+
+        return url;
     }
 }
 

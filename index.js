@@ -28,3 +28,13 @@ console.log(u.count('😚 You now I\'ll be happy', u.Letter));
 console.log(u.count([1, 2, 3], u.Array));
 
 console.log(u.count({'w': 't', 'w2': 't2', 'wf': 'wf', 'wfs': 'wfs2'}, u.Object));
+
+console.log(u.is('#button', 'visible'));
+
+console.log(u.is("#chk", 'checked'));
+
+console.log(u.is("#rdb", 'checked'));
+
+console.log(u.url(null, true));
+
+console.log(u.url('search'))

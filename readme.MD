@@ -34,6 +34,12 @@ console.log(u.is(a = (d) => {}, u.Function));
 console.log(u.is(function a (d) {}, u.Function));
 
 console.log(u.is(class b {}, u.Class));
+
+console.log(u.is('#button', 'visible'));
+
+console.log(u.is("#chk", 'checked'));
+
+console.log(u.is("#rdb", 'checked'));
 ```
 
 ## Count
@@ -60,4 +66,20 @@ console.log(u.count([1, 2, 3], u.Array));
 
 ```javascript
 console.log(u.count({'w': 't', 'w2': 't2', 'wf': 'wf', 'wfs': 'wfs2'}, u.Object));
+```
+
+# Url
+
+**All**
+
+Values: `['hash', 'host', 'hostname', 'href', 'origin', 'pathname', 'port', 'protocol', 'search']`
+
+```javascript
+console.log(u.url(null, true));
+```
+
+**Single**
+
+```javascript
+console.log(u.url('pathname'));
 ```
