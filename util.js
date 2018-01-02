@@ -7,6 +7,9 @@ const isString = Symbol("string");
 const isFunction = Symbol("function");
 const isClass = Symbol("class");
 const isElement = Symbol("element");
+const isEmpty = Symbol("empty");
+const isEmail = Symbol("email");
+const isUrl = Symbol("url");
 
 export default class Util {
     constructor() {
@@ -46,6 +49,26 @@ export default class Util {
 
     get Letter() {
         return "Letter";
+    }
+
+    get Empty() {
+        return "Empty";
+    }
+
+    get Blank() {
+        return "Blank";
+    }
+
+    get Element() {
+        return "Element";
+    }
+
+    get Email() {
+        return "Email";
+    }
+
+    get Url() {
+        return "Url";
     }
 
     [isArray](data) {
@@ -115,6 +138,39 @@ export default class Util {
         return result;
     }
 
+    [isEmpty](data, type) {
+        let ret = false;
+
+        switch (type.toString()) {
+            case 'Empty':
+                ret = (!data || 0 === data.length)
+                break;
+            case 'Blank':
+                ret = (data.length === 0 || !data.trim());
+                break;
+            default:
+                ret = false;
+                break;
+        }
+
+        return ret;
+    }
+
+    [isElement](data) {
+        return data instanceof HTMLElement || data in HTMLElement;
+    }
+
+    [isEmail](data) {
+        let re = /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
+        return re.test(data.toLowerCase());
+    }
+
+    [isUrl](data) {
+        let re = /^(?:(?:https?|ftp):\/\/)?(?:(?!(?:10|127)(?:\.\d{1,3}){3})(?!(?:169\.254|192\.168)(?:\.\d{1,3}){2})(?!172\.(?:1[6-9]|2\d|3[0-1])(?:\.\d{1,3}){2})(?:[1-9]\d?|1\d\d|2[01]\d|22[0-3])(?:\.(?:1?\d{1,2}|2[0-4]\d|25[0-5])){2}(?:\.(?:[1-9]\d?|1\d\d|2[0-4]\d|25[0-4]))|(?:(?:[a-z\u00a1-\uffff0-9]-*)*[a-z\u00a1-\uffff0-9]+)(?:\.(?:[a-z\u00a1-\uffff0-9]-*)*[a-z\u00a1-\uffff0-9]+)*(?:\.(?:[a-z\u00a1-\uffff]{2,})))(?::\d{2,5})?(?:\/\S*)?$/i;
+
+        return re.test(data.toLowerCase());
+    }
+
     [checker](data, type) {
 
         let elemArr = ['checked', 'visible']
@@ -127,6 +183,11 @@ export default class Util {
             'String': this[isString](data),
             'Function': this[isFunction](data),
             'Class': this[isClass](data),
+            'Empty': this[isEmpty](data, type),
+            'Blank': this[isEmpty](data, type),
+            'Element': this[isElement](data),
+            'Email': this[isEmail](data),
+            'Url': this[isUrl](data)
         }
         
         if(elemArr.indexOf(type) > -1) {
