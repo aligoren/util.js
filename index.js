@@ -35,6 +35,34 @@ console.log(u.is("#chk", 'checked'));
 
 console.log(u.is("#rdb", 'checked'));
 
+let t = '';
+let b = ' ';
+console.log(u.is(t, u.Empty));
+
+console.log(u.is(b, u.Blank));
+
+let anElement = '';
+
+console.log(u.is(anElement, u.Element));
+
+anElement = document.querySelector("button");
+
+console.log(u.is(anElement, u.Element));
+
 console.log(u.url(null, true));
 
-console.log(u.url('search'))
+console.log(u.url('search'));
+
+console.log(u.is('goren.ali@yandex.com', u.Email));
+
+console.log(u.is('tchİŞ@hotmaıl.com', u.Email));
+
+console.log(u.is('tchİŞ@hotmaıl.', u.Email));
+
+console.log(u.is('https://aligoren.com', u.Url));
+
+console.log(u.is('ftp://github.com', u.Url));
+
+console.log(u.is('http://localhost', u.Url));
+
+console.log(u.is('www.google.com', u.Url));
