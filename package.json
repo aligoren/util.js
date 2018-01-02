@@ -5,5 +5,9 @@
   "main": "util.js",
   "repository": "https://github.com/aligoren/util.js.git",
   "author": "Ali GÖREN <goren.ali@yandex.com>",
-  "license": "Unlicensed"
+  "license": "Unlicensed",
+  "devDependencies": {
+    "eslint-config-airbnb-base": "^12.1.0",
+    "eslint-plugin-import": "^2.8.0"
+  }
 }
