@@ -264,5 +264,67 @@ export default class Util {
 
         return url;
     }
+
+    page(data, prop) {
+        let title = document.title;
+        let charset = document.characterSet;
+        let doctype = document.doctype.name;
+        let domain = document.domain;
+        let location = document.location;
+        let design = document.designMode;
+        let scripts = Array.from(document.scripts).map(m => m.src);
+        let styles = Array.from(document.styleSheets).filter(f => f.href).map(m => m.href)
+        let referrer = document.referrer;
+        let modified = document.lastModified;
+
+        let dataObj = {
+            title: title,
+            charset: charset,
+            doctype: doctype,
+            domain: domain,
+            location: location,
+            design: design,
+            scripts: scripts,
+            styles: styles,
+            referrer: referrer,
+            modified: modified
+        }
+
+        if(!prop) {
+            return dataObj[data];
+        }
+        
+        switch (data) {
+            case 'title':
+                document.title = prop;
+                break;
+            case 'charset':
+                let checkCharset = document.querySelector("meta[charset]");
+        
+                try {
+                    checkCharset.setAttribute('charset', prop);
+                } catch(Error) {
+                    let el = document.createElement("meta")
+                    el.setAttribute('charset', prop);
+            
+                    document.head.insertBefore(el, document.head.firstElementChild);
+                }
+                break;
+            case 'location':
+                document.location = prop;
+                break;
+            case 'design':
+                if(prop === "on" || prop === "off") {
+                    document.designMode = prop;
+                } else {
+                    throw "Prop must be on or off";
+                }
+                break;
+            default:
+                break;
+        }
+
+        
+    }
 }
 
