@@ -66,3 +66,29 @@ console.log(u.is('ftp://github.com', u.Url));
 console.log(u.is('http://localhost', u.Url));
 
 console.log(u.is('www.google.com', u.Url));
+
+console.log(u.page('title'))
+
+u.page('title', 'New Page title')
+
+console.log(u.page('charset'))
+
+u.page('charset', 'UTF-8');
+
+console.log(u.page('doctype'));
+
+console.log(u.page('location'));
+
+console.log(u.page('location', 'https://www.google.com.tr'));
+
+console.log(u.page('design'));
+
+u.page('design', 'on' || 'off');
+
+console.log(u.page('scripts'));
+
+console.log(u.page('styles'));
+
+console.log(u.page('referrer'));
+
+console.log(u.page('modified'));
