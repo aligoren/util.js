@@ -96,7 +96,7 @@ console.log(u.count([1, 2, 3], u.Array));
 console.log(u.count({'w': 't', 'w2': 't2', 'wf': 'wf', 'wfs': 'wfs2'}, u.Object));
 ```
 
-# Url
+## Url
 
 **All**
 
@@ -110,4 +110,86 @@ console.log(u.url(null, true));
 
 ```javascript
 console.log(u.url('pathname'));
+```
+
+## Page
+
+**Get Title**
+
+```javascript
+console.log(u.page('title'));
+```
+
+**Set Title**
+
+```javascript
+u.page('title', 'New Page title');
+```
+
+**Get Charset**
+
+```javascript
+console.log(u.page('charset'));
+```
+
+**Set Charset**
+
+```javascript
+console.log(u.page('charset', 'UTF-8'));
+```
+
+**Get Doc Type**
+
+```javascript
+console.log(u.page('doctype'));
+```
+
+**Get Location**
+
+```javascript
+console.log(u.page('location'));
+```
+
+**Set Location**
+
+```javascript
+console.log(u.page('location', 'https://www.google.com.tr'));
+```
+
+**Get Design Mode Status**
+
+```javascript
+console.log(u.page('design'));
+```
+
+**Set Design Mode Status**
+
+Values must be `on` or `off`
+
+```javascript
+console.log(u.page('design', 'on'));
+```
+
+**Get Scripts Src**
+
+```javascript
+console.log(u.page('scripts'));
+```
+
+**Get Style Links**
+
+```javascript
+console.log(u.page('styles'));
+```
+
+**Get Document Referrer**
+
+```javascript
+console.log(u.page('referrer'));
+```
+
+**Get Modified Date**
+
+```javascript
+console.log(u.page('modified'));
 ```
