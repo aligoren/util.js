@@ -216,8 +216,6 @@ u.when('document', 'click', (data) => {
 
 **Page Load Events**
 
-**Click etc. Events**
-
 ```javascript
 u.when('document', 'DOMContentLoaded', (data) => {
     console.log(data); // from event
