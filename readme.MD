@@ -193,3 +193,37 @@ console.log(u.page('referrer'));
 ```javascript
 console.log(u.page('modified'));
 ```
+
+## When
+
+**Click etc. Events**
+
+```javascript
+u.when('button', 'click', (data) => {
+    console.log(data.event);
+    console.log(data.index);
+    console.log(data.text);
+    console.log(data.html);
+});
+
+u.when('document', 'click', (data) => {
+    console.log(data.event);
+    console.log(data.index);
+    console.log(data.text);
+    console.log(data.html);
+});
+```
+
+**Page Load Events**
+
+**Click etc. Events**
+
+```javascript
+u.when('document', 'DOMContentLoaded', (data) => {
+    console.log(data); // from event
+});
+
+u.when('document', 'load', (data) => {
+    console.log(data); // from event
+});
+```
