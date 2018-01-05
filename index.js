@@ -92,3 +92,25 @@ console.log(u.page('styles'));
 console.log(u.page('referrer'));
 
 console.log(u.page('modified'));
+
+u.when('button', 'click', (data) => {
+    console.log(data.event);
+    console.log(data.index);
+    console.log(data.text);
+    console.log(data.html);
+});
+
+u.when('document', 'click', (data) => {
+    console.log(data.event);
+    console.log(data.index);
+    console.log(data.text);
+    console.log(data.html);
+});
+
+u.when('document', 'DOMContentLoaded', (data) => {
+    console.log(data); // from event
+});
+
+u.when('document', 'load', (data) => {
+    console.log(data); // from event
+});
