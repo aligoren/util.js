@@ -323,8 +323,34 @@ export default class Util {
             default:
                 break;
         }
+    }
 
-        
+    when(element, event, fn) {
+
+        if(element === 'document' || element === 'body') {
+            element = 'html';
+        }
+
+        let ev = event;
+        let el = document.querySelectorAll(element);
+
+        if(element === 'html' && (event === 'load' || event === 'DOMContentLoaded')) {
+            el = document.addEventListener(ev, (data) => {
+                fn(data)
+            });
+        } else {
+            el.forEach((k, v) => {
+                let data = {
+                    event: ev,
+                    index: v,
+                    html: el[v],
+                    text: el[v].innerText,
+                }
+                el[v].addEventListener(ev, () => {
+                    fn(data);
+                });
+            });
+        }
     }
 }
 
