@@ -225,3 +225,24 @@ u.when('document', 'load', (data) => {
     console.log(data); // from event
 });
 ```
+
+## Where
+
+```javascript
+const arr = [
+    {
+        name: 'test',
+        surname: 'test1'
+    },
+    {
+        name: 'test23',
+        surname: 'newsname'
+    },
+    {
+        name: 'test23',
+        surname: 'newsname'
+    }
+]
+
+console.log(u.where(arr, 'surname', 'newsname'));
+```
