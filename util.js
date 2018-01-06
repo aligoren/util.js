@@ -352,5 +352,11 @@ export default class Util {
             });
         }
     }
+
+    where(data, column, search) {
+        let result = data.filter(m => m[column] === search);
+
+        return result;
+    }
 }
 
